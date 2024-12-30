@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Love Letter for You</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      z-index: 2;
+      animation: pulse 3s infinite;
+    }
+    h1 {
+      color: #ff6b6b;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      color: white;
+      background: #ff6b6b;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s, left 0.3s, top 0.3s;
+      position: relative;
+    }
+    button:hover {
+      background: #ff4d4d;
+      transform: scale(1.1);
+    }
+    button.annoying {
+      animation: moveRandomly 0.5s linear infinite, colorFlicker 0.1s step-start infinite;
+    }
+
+    button.shake {
+      animation: shake 0.3s ease-in-out infinite;
+    }
+
+    @keyframes moveRandomly {
+      0% {
+        left: 0;
+        top: 0;
+      }
+      25% {
+        left: 50px;
+        top: -30px;
+      }
+      50% {
+        left: -30px;
+        top: 50px;
+      }
+      75% {
+        left: 70px;
+        top: 40px;
+      }
+      100% {
+        left: 0;
+        top: 0;
+      }
+    }
+
+    @keyframes colorFlicker {
+      0% { background: #ff6b6b; }
+      50% { background: #ffb3b3; }
+      100% { background: #ff6b6b; }
+    }
+
+    @keyframes shake {
+      0% {
+        transform: translateX(0);
+      }
+      25% {
+        transform: translateX(-10px);
+      }
+      50% {
+        transform: translateX(10px);
+      }
+      75% {
+        transform: translateX(-10px);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    #letter {
+      margin-top: 20px;
+      padding: 15px;
+      background: #fff0f3;
+      border: 1px solid #ffd1dc;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      animation: slideIn 1s;
+    }
+    .hidden {
+      display: none;
+    }
+    img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      animation: fadeIn 2s;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes slideIn {
+      0% { transform: translateY(50px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes floatAnimation {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+
+    .heart, .floating-img {
+      position: absolute;
+      animation: floatAnimation 3s infinite;
+    }
+
+    .heart {
+      color: #ff6b6b;
+      font-size: 20px;
+    }
+
+    .floating-img {
+      border-radius: 50%;
+      object-fit: cover;
+      animation-duration: calc(3s + (Math.random() * 2s)); /* Vary animation duration */
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+      .container {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="img7.jpg" alt="My Love">
+    <h1>For My Akku</h1>
+    <p>Click the button below to reveal my message for you. ❤️</p>
+    <button id="reveal-btn">Reveal Love Letter</button>
+    <div id="letter" class="hidden">
+      <p>My Dearest,</p>
+      <p>
+          As we step into this new year together, I can't help but feel an overwhelming sense of gratitude. Each moment spent with you in the past year has been a precious gift, and I’m excited for the countless new memories we’ll create in the year ahead.
+          This year, I promise to cherish you more deeply, to support your dreams, challenge.
+          Though we have many breakup,fights and sometimes I irriate you alot and you also .Still ILOVEYOU and we will always be together.
+          After reading this give me one pic of yours.
+          Here’s to a year filled with joy, laughter, love, and all the beautiful moments we’ll share.
+
+          Forever yours,
+      </p>
+      <p>
+        Thank you for being my best friend, my soulmate, and my everything.
+        I love you more than words can ever express.
+      </p>
+      <p>Forever yours,</p>
+      <p><strong>Aditya Singh</strong></p>
+    </div>
+  </div>
+
+  <script>
+    const button = document.getElementById('reveal-btn');
+    const letter = document.getElementById('letter');
+
+    button.addEventListener('click', () => {
+      letter.classList.toggle('hidden');
+    });
+
+    // Add annoying effect when hovering over the button
+    button.addEventListener('mouseover', () => {
+      button.classList.add('annoying', 'shake');
+    });
+
+    button.addEventListener('mouseout', () => {
+      button.classList.remove('annoying', 'shake');
+    });
+
+    function createFloatingElements() {
+      const body = document.body;
+      const imageSources = ['img1.jpg', 'img2.jpg', 'img3.jpg', 'img4.jpg', 'img5.jpg', 'img6.jpg'];
+
+      for (let i = 0; i < 10; i++) { // Reduced number of elements
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = Math.random() * 100 + 'vh';
+        body.appendChild(heart);
+
+        const img = document.createElement('img');
+        const randomImage = imageSources[Math.floor(Math.random() * imageSources.length)];
+        img.src = randomImage;
+        img.classList.add('floating-img');
+        img.style.left = Math.random() * 100 + 'vw';
+        img.style.top = Math.random() * 100 + 'vh';
+        img.style.width = `${30 + Math.random() * 30}px`; // Random size between 30px and 60px
+        img.style.height = img.style.width;
+        img.style.animationDelay = `${Math.random() * 2}s`; // Random animation delay
+        body.appendChild(img);
+      }
+    }
+
+    createFloatingElements();
+  </script>
+</body>
+</html>
